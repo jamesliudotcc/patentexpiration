@@ -1,0 +1,38 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+    <head>
+        <title>Reusable Form Demo</title>
+    </head>
+    <body>
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                <ul>
+                    {% for message in messages %}
+                        <li>{{ message[1] }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        {% endwith %}
+        <p>Please note: this patent term calculator is experimental and under heavy development. Not all
+            relevant calculations have been implemented. For example, term disclaimer is not implemented,
+            and neither is patent term extension for non-USPTO delays. About the only thing working is
+            that the app fetches term adjustment from the USPTO and does a calculation.
+        </p>
+        <p>Also, note that it only works for patents 5,000,000 and above. All patents earlier than that
+            are expired anyway. And for now, it only accepts numbers without commas. There is a lot of
+            development left to do, and I am only a beginner at this. Please be patient.
+        </p>
+        <p>That said, try it out by typing in a patent number 5000000 or higher in the box and hit sumbit.</p>
+        <form action="" method="post">
+            {{ form.csrf }}
+ 
+            <div class="input text">
+                {{ form.patent.label }} {{ form.patent }}
+            </div>
+ 
+            <div class="input submit">
+                <input type="submit" value="Submit" />
+            </div>
+        </form>
+    </body>
+</html>
